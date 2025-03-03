@@ -1,0 +1,976 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* Color Scheme */
+:root {
+    --primary-color: #d62828;  /* Red */
+    --secondary-color: #000000; /* Black */
+    --accent-color: #ffbe0b;    /* Peach */
+    --extra-color: #3a86ff;     /* Blue */
+    --text-color: #ffffff;
+    --glass-bg: rgba(0, 0, 0, 0.75);
+}
+
+/* Side Navbar */
+.side-navbar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 280px;
+    height: fit;
+    background: var(--glass-bg);
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    backdrop-filter: blur(10px); /* Glass Effect */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    border-right: 2px solid var(--extra-color);
+    transition: all 0.4s ease;
+}
+
+/* Sidebar Scrollbar */
+.side-navbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.side-navbar::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+/* Section Titles */
+.nav-title {
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+/* Navigation Links */
+.side-navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-navbar ul li {
+    margin-bottom: 8px;
+}
+
+.side-navbar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: bold;
+}
+
+/* Neon Glow Hover Effect */
+.side-navbar ul li a:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateX(5px);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Sidebar Glow Border */
+.side-navbar ul li a::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background: linear-gradient(180deg, var(--extra-color), var(--accent-color));
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+/* Glow Effect on Hover */
+.side-navbar ul li a:hover::before {
+    opacity: 1;
+}
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 899px) {
+    .side-navbar {
+        display: none; /* Hide sidebar on small screens */
+    }
+}
+body {
+    background-color: #000;
+    color: white;
+    overflow: hidden; /* Prevent scrolling before preloader disappears */
+}
+
+/* 🔥 Preloader Styles */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
+
+.loader-container {
+    text-align: center;
+}
+
+/* ⚽ Football Icon */
+.loader {
+    font-size: 50px;
+    color: red;
+    animation: spin 1.5s linear infinite, bounce 1s infinite alternate, 
+               glow 1.5s alternate infinite, shake 0.5s infinite, 
+               glitch 0.3s infinite alternate, colorCycle 2s infinite;
+}
+
+/* 🔥 Spinning Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 🔥 Bouncing Effect */
+@keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-20px); }
+}
+
+/* ✨ Glowing Effect */
+@keyframes glow {
+    0% { text-shadow: 0 0 10px red, 0 0 20px peachpuff; }
+    100% { text-shadow: 0 0 20px red, 0 0 40px peachpuff; }
+}
+
+/* 🎨 Color Cycling */
+@keyframes colorCycle {
+    0% { color: red; }
+    25% { color: peachpuff; }
+    50% { color: white; }
+    75% { color: red; }
+    100% { color: peachpuff; }
+}
+
+/* 🌪️ Shaking Effect */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(3px); }
+}
+
+/* 🌀 Glitch Effect */
+@keyframes glitch {
+    0% { text-shadow: 2px 2px peachpuff; }
+    25% { text-shadow: -2px -2px red; }
+    50% { text-shadow: 2px -2px peachpuff; }
+    75% { text-shadow: -2px 2px red; }
+    100% { text-shadow: 2px 2px peachpuff; }
+}
+
+/* 💡 Loading Text */
+.loading-text {
+    color: peachpuff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeBlink 1.5s infinite;
+}
+
+/* 🔥 Blinking Effect */
+@keyframes fadeBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, peachpuff, black);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: 0.3s ease-in-out;
+    height: 80px;
+}
+
+/* 🏆 Logo Styling */
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* 🏆 Nav Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.toplink{
+  margin-right: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+@media screen and (max-width: 900px) {
+    .topnav_links{
+      display: none;
+    }
+}
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: peachpuff;
+    transform: scale(1.1);
+}
+
+/* 🔥 Add some space so content doesn't hide behind navbar */
+.content {
+    margin-top: 80px;
+}
+/* 🎭 Logo */
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+/* 🔥 Glitch Effect for "OFS" */
+.ofs {
+    color: red;
+    font-weight: bold;
+    position: relative;
+    animation: glitch 0.5s infinite;
+}
+
+.sports {
+    color: white;
+}
+
+/* 🔘 Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+    font-weight: bolder;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+button {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Neon Hover */
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1;
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+/* Log in */
+.login-btn {
+    border: 2px solid peachpuff;
+    background: transparent;
+    color: peachpuff;
+}
+
+.login-btn:hover {
+    background: peachpuff;
+    color: black;
+}
+
+/* Sign up */
+.signup-btn {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.signup-btn:hover {
+    background-color: peachpuff;
+    color: black;
+}
+/* ✨ Enable Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 🔥 Hide Elements Before Scroll */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 🔥 Reveal Effect */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🎭 Slide-In Animations */
+.slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 🌀 Rotate + Zoom Effect */
+.zoom-rotate {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 🚀 Parallax Effect */
+.parallax {
+    transform: translateY(20px);
+    transition: transform 1s ease-out;
+}
+
+.parallax.show {
+    transform: translateY(0);
+}/* 🔥 Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, red, black);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+/* 🔥 Show Button When Scrolled */
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 🎭 Hover Effects */
+#backToTop:hover {
+    background: linear-gradient(45deg, peachpuff, black);
+    color: black;
+    transform: scale(1.2) rotate(360deg);
+    box-shadow: 0 0 25px peachpuff;
+}
+
+/* 🚀 Pulsating Animation */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px red; }
+    50% { box-shadow: 0 0 25px peachpuff; }
+    100% { box-shadow: 0 0 10px red; }
+}
+
+#backToTop {
+    animation: pulse 2s infinite;
+}
+
+/* 🌪️ Bouncing Effect */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#backToTop.show {
+    animation: bounce 1.5s infinite, pulse 2s infinite;
+}/* CLASSY & MAD TOP LOADER */
+#top-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, red, black, peachpuff, red);
+    z-index: 999999;
+    box-shadow: 0px 0px 10px red, 0px 0px 20px peachpuff;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Flashing Glow Effect */
+@keyframes crazyGlow {
+    0% { box-shadow: 0px 0px 5px red, 0px 0px 10px peachpuff; }
+    50% { box-shadow: 0px 0px 20px red, 0px 0px 40px peachpuff; }
+    100% { box-shadow: 0px 0px 5px red, 0px 0px 10px peachpuff; }
+}
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #07141E; /* Dark background */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999999;
+}
+
+.nav-item {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.nav-item i {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+ .activenv i {
+    color: red; /* Active icon color */
+}
+
+.activenv .text {
+    color: red; /* Active text color */
+}
+@media screen and (min-width: 900px) {
+    .bottom-nav {
+        display: none;
+    }
+    .content {
+    margin-left: 300px;
+}
+}
+/* Hot Matches Subtitle */
+.header-text {
+    font-size: 16px; /* Smaller text */
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.4), 0 0 15px rgba(255, 165, 0, 0.4);
+    animation: subtleGlow 1.5s infinite alternate;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.header-text:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 165, 0, 0.6);
+}
+
+/* Soft Neon Glow Animation */
+@keyframes subtleGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.3), 0 0 10px rgba(255, 165, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 15px rgba(255, 165, 0, 0.5);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-text {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+}
+/* Footer Styling */
+.footer {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    font-size: 14px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid #E6C0A5;
+}
+
+/* Social Media Icons */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    font-size: 22px;
+    color: white;
+    margin: 0 12px;
+    transition: transform 0.4s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    transform: scale(1.3) rotate(8deg);
+}
+
+.social-icons .fa-facebook:hover { color: #1877f2; }  
+.social-icons .fa-twitter:hover { color: #1da1f2; }   
+.social-icons .fa-instagram:hover { color: #c13584; } 
+.social-icons .fa-youtube:hover { color: #ff0000; }   
+
+/* League Logos */
+.league-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.league-logos a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: peachpuff;
+    padding: 2px;
+}
+
+.league-logos a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+.league-logos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.match-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.match-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.match-card:hover {
+  transform: scale(1.05);
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.match-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Away team - text before logo */
+.team.away {
+  flex-direction: row-reverse;
+}
+
+.team img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+}
+
+.team-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.versus {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .match-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .match-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* Match Fixtures Container */
+.mt-matches-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Match Card */
+.mt-match-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mt-match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 18px rgba(255, 255, 255, 0.2);
+}
+
+/* Match Info */
+.mt-match-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+/* Match Details */
+.mt-match-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Team Styling */
+.mt-team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mt-team img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* VS Text */
+.mt-vs {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+/* Watch Button (hidden on mobile) */
+.mt-watch-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.mt-watch-btn i {
+    font-size: 16px;
+}
+
+/* Hide watch button on screens below 900px */
+@media (max-width: 900px) {
+    .mt-watch-btn {
+        display: none;
+    }
+}
+
+/* Mobile View Styling */
+@media (max-width: 600px) {
+    .mt-matches-container {
+        width: 100%;
+    }
+
+    .mt-match-card {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .mt-match-info {
+        font-size: 12px;
+    }
+
+    .mt-vs {
+        font-size: 14px;
+    }
+
+    .mt-team img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.contact-section {
+    padding: 50px 20px;
+}
+
+.contact-title {
+    font-size: 18px;
+    color: peachpuff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.main-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.main-heading span {
+    color: #ff4d79;
+}
+
+.contact-description {
+    font-size: 16px;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.contact-box, .social-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.contact-label, .social-label {
+    font-size: 14px;
+    color: peachpuff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contact-email {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4d79;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.contact-email:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50%;
+    color: #fff;
+    transition: 0.3s;
+    padding: 5px;
+}
+
+.facebook { background: #4267B2;}
+.telegram { background: #0088cc; }
+.youtube { background: #FF0000; }
+
+.icon:hover {
+    opacity: 0.8;
+}
+.contact-form-section {
+    background: #121212;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    background: #1c1c1c;
+    border: 1px solid peachpuff;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+.send-btn {
+    background: transparent;
+    border: 2px solid peachpuff;
+    color: #ff3377;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background: #E6C0A5;
+    color: white;
+}
