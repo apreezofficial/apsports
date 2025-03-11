@@ -38,10 +38,14 @@ var tawkInterval = setInterval(function () {
         tawkIframe.style.right = "auto"; // Remove default right positioning
         tawkIframe.style.position = "fixed"; // Ensure it stays in place
 
+            tawkIframe.style.bottom = "100px";
+            tawkIframe.style.top = "auto";
         // Detect when Tawk.to updates the chat position and override it
         new MutationObserver(function () {
             tawkIframe.style.left = "20px";
             tawkIframe.style.right = "auto";
+            tawkIframe.style.bottom = "100px";
+            tawkIframe.style.top = "auto";
         }).observe(tawkIframe, { attributes: true, attributeFilter: ['style'] });
 
         clearInterval(tawkInterval);
@@ -91,6 +95,8 @@ var tawkInterval = setInterval(function () {
         <li><a href="#">Manchester United</a></li>
         <li><a href="#">Chelsea</a></li>
         <li><a href="#">Real Madrid</a></li>
+        <li><a href="#">Manchester United</a></li>
+        <li><a href="#">Bourthmound</a></li>
         <li><a href="#">Barcelona</a></li>
         <li><a href="#">Bayern Munich</a></li>
         <li><a href="#">Napoli</a></li>
@@ -100,7 +106,7 @@ var tawkInterval = setInterval(function () {
     </div>
   </aside>  
     <div class="bottom-nav">
-      <div class="nav-item activenv">
+      <div class="nav-item">
         <a href="?page=home" class="routelink" data-page="home">
         <i class="fas fa-futbol"></i>
         <span class="text">HOME</span></a>
@@ -116,7 +122,7 @@ var tawkInterval = setInterval(function () {
         <span class="text">CONTACT</span></a>
       </div>
     </div>
-  <div class="content" id="content">
+  <div class="content hidden" id="content">
     
    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 </div>
@@ -159,87 +165,65 @@ function crypto() {
 function card() {
   document.getElementById("paymsg").innerHTML ="Your account will be automatically updated within a minute or so once you pay. If it doesn't, contact support@apsports.com.";
 }
-
-document.addEventListener("readystatechange", function() {
+// Handle Price Button Click
+function handlePriceButtonClick(button) {
   const priceButtons = document.querySelectorAll(".price-button");
-  const paymentSection = document.getElementById("payment-section");
   const planDetails = document.getElementById("plan-details");
   const discountField = document.getElementById("discount");
   const totalField = document.getElementById("total-price");
 
-  priceButtons.forEach(button => {
-    button.addEventListener("click", function() {
-      // Reset all buttons
-      priceButtons.forEach(btn => {
-        btn.textContent = "Buy now";
-        btn.classList.remove("selected-plan");
-      });
-
-      // Update the clicked button
-      this.textContent = "Selected";
-      this.classList.add("selected-plan");
-
-      // Extract plan details
-      let months = this.getAttribute("data-months");
-      let price = parseFloat(this.getAttribute("data-price"));
-      let discount = parseFloat(this.getAttribute("data-discount"));
-      let discountAmount = (price * discount) / 100;
-      let totalPrice = price - discountAmount;
-
-      // Fill in payment section
-      planDetails.textContent = `${months} Month - $${price}`;
-      discountField.textContent = `-${discountAmount.toFixed(2)}`;
-      totalField.textContent = `$${totalPrice.toFixed(2)}`;
-
-      // Scroll to payment section
-      paymentSection.scrollIntoView({ behavior: "smooth" });
-    });
+  // Reset all buttons
+  priceButtons.forEach(btn => {
+    btn.textContent = "Buy now";
+    btn.classList.remove("selected-plan");
   });
-});
-document.addEventListener("readystatechange", function() {
+
+  // Update the clicked button
+  button.textContent = "Selected";
+  button.classList.add("selected-plan");
+
+  // Extract plan details
+  const months = button.getAttribute("data-months");
+  const price = parseFloat(button.getAttribute("data-price"));
+  const discount = parseFloat(button.getAttribute("data-discount"));
+  const discountAmount = (price * discount) / 100;
+  const totalPrice = price - discountAmount;
+
+  // Update payment section
+  planDetails.textContent = `${months} Month Plan - $${price}`;
+  discountField.textContent = `-${discountAmount.toFixed(2)}`;
+  totalField.textContent = `$${totalPrice.toFixed(2)}`;
+
+  // Scroll to payment section
+  document.getElementById("payment-section").scrollIntoView({ behavior: "smooth" });
+}
+// Handle Scroll Animation
+function handleScroll() {
   const elements = document.querySelectorAll(".pricing-card, .payment-box");
-
-  function handleScroll() {
-    elements.forEach((el) => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add("visible");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", handleScroll);
-  handleScroll(); // Run initially in case elements are already in view
-
-  // Scroll to payment box when plan is selected
-  const planButtons = document.querySelectorAll(".buy-now");
-  const paymentBox = document.querySelector(".payment-box");
-
-  planButtons.forEach((button) => {
-    button.addEventListener("click", function() {
-      paymentBox.classList.add("activeny");
-      paymentBox.scrollIntoView({ behavior: "smooth" });
-    });
+  elements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add("visible");
+    }
   });
-});
+}
 
-document.addEventListener("readystatechange", () => {
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
+// Attach scroll event
+window.onscroll = handleScroll;
+handleScroll(); // Run initially in case elements are already in view
+function toggleFAQ(item) {
+    const isActive = item.classList.contains('factive');
 
-            // Close all items first
-            document.querySelectorAll('.faq-item').forEach(el => {
-                el.classList.remove('active');
-            });
-
-            // If the clicked item wasn't active, open it
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
+    // Close all FAQ items
+    document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('factive');
     });
-});
+
+    // If the clicked item wasn't active, open it
+    if (!isActive) {
+        item.classList.add('factive');
+    }
+}
             </script>
 </body>
 </html>

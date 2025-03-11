@@ -1,148 +1,130 @@
+<!-- Pricing Section -->
+  <section id="pricing" >
+    <h2 class="satch-header">Our Packages</h2>
+    <p class="text-white text-center">Find the Perfect Plan for You</p>
 
-    <!-- Pricing Section -->
-    <section id="pricing">
-      <h2 class="match-header">Our Packages</h2>
-      <p class="text-white text-center">Find the Perfect Plan for You</p>
-    
-      <div class="pricing-container">
-        <!-- 12 Month Plan -->
-        <div class="pricing-card">
-          <span class="best-value">Best Value</span>
-          <h3>12 Month</h3>
-          <p class="price"><s>$240</s> <strong>$72</strong></p>
-          <p>70% off. Get uninterrupted streaming for 12 months.</p>
-          <button class="price-button" data-months="12" data-price="240" data-discount="70">Buy now</button>
-        </div>
-    
-        <!-- 1 Month Plan -->
-        <div class="pricing-card">
-          <h3>1 Month</h3>
-          <p class="price"><s>$20</s> <strong>$15</strong></p>
-          <p>25% off. Get uninterrupted streaming for one month.</p>
-          <button class="price-button" data-months="1" data-price="20" data-discount="25">Buy now</button>
-        </div>
-    
-        <!-- 3 Month Plan -->
-        <div class="pricing-card">
-          <h3>3 Month</h3>
-          <p class="price"><s>$60</s> <strong>$42</strong></p>
-          <p>30% off. Get uninterrupted streaming for three months.</p>
-          <button class="price-button" data-months="3" data-price="60" data-discount="30">Buy now</button>
-        </div>
+    <div class="pricing-container">
+      <!-- 12 Month Plan -->
+      <div class="pricing-card">
+        <span class="best-value">Best Value</span>
+        <h3>12 Month</h3>
+        <p class="price"><s>$240</s> <strong>$72</strong></p>
+        <p>70% off. Get uninterrupted streaming for 12 months.</p>
+        <button class="price-button" data-months="12" data-price="240" data-discount="70" onclick="handlePriceButtonClick(this)">
+          Buy now
+        </button>
       </div>
-    </section>
-    <div class="retty">
+
+      <!-- 1 Month Plan -->
+      <div class="pricing-card">
+        <h3>1 Month</h3>
+        <p class="price"><s>$20</s> <strong>$15</strong></p>
+        <p>25% off. Get uninterrupted streaming for one month.</p>
+        <button class="price-button" data-months="1" data-price="20" data-discount="25" onclick="handlePriceButtonClick(this)">
+          Buy now
+        </button>
+      </div>
+
+      <!-- 3 Month Plan -->
+      <div class="pricing-card">
+        <h3>3 Month</h3>
+        <p class="price"><s>$60</s> <strong>$42</strong></p>
+        <p>30% off. Get uninterrupted streaming for three months.</p>
+        <button class="price-button" data-months="3" data-price="60" data-discount="30" onclick="handlePriceButtonClick(this)">
+          Buy now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="retty">
     <!-- Payment Section -->
     <div class="onefl">
-    <section id="payment-section">
-      <h2>Choose Your Payment Method</h2>
-    
-      <div class="payment-options">
-        <label class="payment-method" onclick="card()">
-          <input type="radio" name="payment-method" value="card" checked>
-          <span class="method-name">Card</span>
-          <span class="icons">
-            <img src="assets/images/payments/vis.jpg" alt="Visa">
-            <img src="assets/images/payments/mas.jpg" alt="MasterCard">
-            <img src="assets/images/payments/mae.jpg" alt="Maestro">
-            <img src="assets/images/payments/din.jpg" alt="Diners Club">
-          </span>
-        </label>
-    
-        <label class="payment-method" onclick="crypto()">
-          <input type="radio" name="payment-method" value="crypto">
-          <span class="method-name">Crypto</span>
-          <span class="icons">
-            <img src="assets/images/payments/bit.jpg" alt="Bitcoin">
-            <img src="assets/images/payments/bin.jpg" alt="Binance">
-            <img src="assets/images/payments/ete.jpg" alt="Ethereum">
-            <img src="assets/images/payments/tet.jpg" alt="Tether">
-          </span>
-        </label>
-      </div>
-    
-      <div class="payment-summary satch-header" >
-        <p id="plan-details">Select a plan</p>
-        <p>Discount: <span id="discount">-$0</span></p>
-        <p><strong>Grand Total: <span id="total-price">$0</span></strong></p>
-      </div>
-      <div class="confirmatory-message" id="paymsg">
-Your account will be automatically updated within a minute or so once you pay. If it doesn't, contact support@apsports.com.
-    </div>
-            <p class="terms">
-            By proceeding you are agreed to our 
-            <span class="link">Terms & Conditions</span> and 
-            <span class="link">Privacy Policy</span>.
-        </p>
+      <section id="payment-section">
+        <h2>Choose Your Payment Method</h2>
 
+        <div class="payment-options">
+          <label class="payment-method" onclick="card()">
+            <input type="radio" name="payment-method" value="card" checked>
+            <span class="method-name">Card</span>
+            <span class="icons">
+              <img src="assets/images/payments/vis.jpg" alt="Visa">
+              <img src="assets/images/payments/mas.jpg" alt="MasterCard">
+              <img src="assets/images/payments/mae.jpg" alt="Maestro">
+              <img src="assets/images/payments/din.jpg" alt="Diners Club">
+            </span>
+          </label>
+
+          <label class="payment-method" onclick="crypto()">
+            <input type="radio" name="payment-method" value="crypto">
+            <span class="method-name">Crypto</span>
+            <span class="icons">
+              <img src="assets/images/payments/bit.jpg" alt="Bitcoin">
+              <img src="assets/images/payments/bin.jpg" alt="Binance">
+              <img src="assets/images/payments/ete.jpg" alt="Ethereum">
+              <img src="assets/images/payments/tet.jpg" alt="Tether">
+            </span>
+          </label>
+        </div>
+
+        <div class="payment-summary satch-header">
+          <p id="plan-details">Select a plan</p>
+          <p>Discount: <span id="discount">-$0</span></p>
+          <p><strong>Grand Total: <span id="total-price">$0</span></strong></p>
+        </div>
+        <div class="confirmatory-message" id="paymsg">
+          Your account will be automatically updated within a minute or so once you pay. If it doesn't, contact support@apsports.com.
+        </div>
+        <p class="terms">
+          By proceeding you are agreed to our
+          <span class="link">Terms & Conditions</span> and
+          <span class="link">Privacy Policy</span>.
+        </p>
         <center><button class="pay-btn">Pay Now</button></center>
+      </section>
+  </div>
+  <div class="faq-container">
+  <h2>Frequently Asked Questions</h2>
+  <p class="faq-description">
+    If you’re curious about our plans, features, or benefits, this section will help you find what you’re looking for.
+  </p>
 
-</section>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      What Payment Methods we accepted? <span class="arrow">↓</span>
     </div>
-    
-    
-    <div class="container">
-
-        <div class="package-box">
-            <h2 class="match-header text-center">Package Details</h2>
-            <ul class="package-list">
-                <li><span class="icon">⚽</span> 100+ football leagues and tournaments</li>
-                <li><span class="icon">📺</span> English commentary</li>
-                <li><span class="icon">📰</span> No ads/popups</li>
-                <li><span class="icon">🔑</span> 256-bit encrypted</li>
-                <li><span class="icon">🎧</span> 24/7 dedicated support</li>
-                <li><span class="icon">🔒</span> 100% Safe and secure</li>
-                <li><span class="icon">📱</span> Watch on your laptop, phone, or tablet</li>
-                <li><span class="icon">💲</span> Discreet billing</li>
-                <li><span class="icon">📺</span> Device limit 2</li>
-            </ul>
-        </div>
+    <div class="faq-answer">
+      We accept credit/debit cards, PayPal, and cryptocurrency.
     </div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      How can I make a payment? <span class="arrow">↓</span>
     </div>
-     <div class="faq-container">
-        <h2>Frequently Asked Questions</h2>
-        <p class="faq-description">
-            If you’re curious about our plans, features, or benefits, this section will help you find what you’re looking for.
-        </p>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                What Payment Methods we accepted? <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                We accept credit/debit cards, PayPal, and cryptocurrency.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                How can I make a payment? <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                You can make a payment through our secure payment gateway available on the checkout page.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Why isn’t my subscription activated yet? <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                Subscriptions may take up to 24 hours to activate. If the delay persists, contact support.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                How do I remove pop-ups from the player? <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                Ensure you have an active subscription, and disable third-party extensions that might interfere.
-            </div>
-        </div>
+    <div class="faq-answer">
+      You can make a payment through our secure payment gateway available on the checkout page.
     </div>
+  </div>
 
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      Why isn’t my subscription activated yet? <span class="arrow">↓</span>
+    </div>
+    <div class="faq-answer">
+      Subscriptions may take up to 24 hours to activate. If the delay persists, contact support.
+    </div>
+  </div>
 
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <div class="faq-question">
+      How do I remove pop-ups from the player? <span class="arrow">↓</span>
+    </div>
+    <div class="faq-answer">
+      Ensure you have an active subscription, and disable third-party extensions that might interfere.
+    </div>
+  </div>
+</div>
             <style>
               
 /* Pricing Section */
@@ -160,7 +142,7 @@ Your account will be automatically updated within a minute or so once you pay. I
     border-radius: 15px;
     padding: 20px;
     text-align: center;
-    width: 280px;
+    width: 30%;
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
     position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -240,15 +222,9 @@ h3 {
     margin: auto;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
-
-.payment-options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
 .payment-method {
     display: flex;
+    margin-top: 5px;
     align-items: center;
     background: #252525;
     padding: 12px;
@@ -258,22 +234,18 @@ h3 {
     border: 1px solid transparent;
 }
 
-.payment-method input {
-    margin-right: 10px;
-}
-
 .payment-method:hover {
     border: 1px solid #ff4081;
 }
 
 .icons img {
-    width: 35px;
-    margin-left: 5px;
+    width: 25px;
+    margin-left: 2.5px;
     transition: 0.3s;
 }
 
 .payment-method:hover .icons img {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 
 .payment-summary {
@@ -403,7 +375,6 @@ html {
     color: #fff;
     font-size: 14px;
 }
-
 .package-list li .icon {
     margin-right: 10px;
     font-size: 18px;
@@ -463,8 +434,9 @@ h2 {
 
 .arrow {
     font-size: 20px;
+    font-weight: 900;
     color: #ff4b7b;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
 .faq-answer {
@@ -480,13 +452,13 @@ h2 {
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.faq-item.activenu .faq-answer {
+.faq-item.factive .faq-answer {
     display: block;
     opacity: 1;
     transform: translateY(0);
 }
 
-.faq-item.activenu .arrow {
+.faq-item.factive .arrow {
     transform: rotate(180deg);
 }
 
@@ -501,12 +473,21 @@ h2 {
     }
     .faq-container{
       width: 60%;
-      margin-left: 20%;
+      margin-left: 5px;
     }
 }
 @media (max-width: 899px) {
   .retty{
    margin-top: 50px;
+  }
+  
+  .pricing-card{
+    width: 45%;
+  }
+}
+@media (max-width: 600px) {
+  .pricing-card{
+    width: 90%;
   }
 }
             </style>
