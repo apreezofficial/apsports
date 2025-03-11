@@ -16,33 +16,6 @@
     --glass-bg: rgba(0, 0, 0, 0.75);
 }
 
-/* Side Navbar */
-.side-navbar {
-    position: fixed;
-    left: 0;
-    top: 80px;
-    width: 280px;
-    height: fit;
-    background: var(--glass-bg);
-    padding: 20px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) transparent;
-    backdrop-filter: blur(10px); /* Glass Effect */
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-    border-right: 2px solid var(--extra-color);
-    transition: all 0.4s ease;
-}
-
-/* Sidebar Scrollbar */
-.side-navbar::-webkit-scrollbar {
-    width: 5px;
-}
-
-.side-navbar::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-}
 
 /* Section Titles */
 .nav-title {
@@ -76,6 +49,38 @@
     transition: all 0.3s ease;
     position: relative;
     font-weight: bold;
+}/* Side Navbar */
+.side-navbar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 280px;
+    height: fit-content; /* Corrected from 'fit' to 'fit-content' */
+    background: var(--glass-bg);
+    padding: 20px;
+    backdrop-filter: blur(10px); /* Glass Effect */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    border-right: 2px solid var(--extra-color);
+    transition: all 0.4s ease;
+    overflow-y: auto; /* Ensure the scrollbar appears when content overflows */
+}
+
+/* Sidebar Scrollbar */
+.side-navbar::-webkit-scrollbar {
+    width: 10px; /* Set the width of the scrollbar */
+}
+
+.side-navbar::-webkit-scrollbar-track {
+    background: transparent; /* Optional: Customize the track background */
+}
+
+.side-navbar::-webkit-scrollbar-thumb {
+    background: var(--primary-color); /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.side-navbar::-webkit-scrollbar-thumb:hover {
+    background: darken(var(--primary-color), 10%); /* Optional: Darken thumb on hover */
 }
 
 /* Neon Glow Hover Effect */
