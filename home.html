@@ -1,5 +1,5 @@
-<div class="slider">
-    <div class="slider-track">
+<div class="slider-container">
+    <div class="slider">
         <div class="slide"><img src="assets/images/clubs/1.png" alt="League 1" class="logo"></div>
         <div class="slide"><img src="assets/images/clubs/1.png" alt="League 2" class="logo"></div>
         <div class="slide"><img src="assets/images/clubs/1.png" alt="League 3" class="logo"></div>
@@ -272,48 +272,47 @@
         </div>  
     </section>
     <style>
-      .slider {
+      /* Slider Container */
+.slider-container {
     width: 100%;
     overflow: hidden;
     position: relative;
 }
 
-.slider-track {
+/* Slider Track */
+.slider {
     display: flex;
-    width: 1000%; /* 10 logos * 100% */
-    animation: slide 20s infinite;
+    width: 250%; /* 10 logos / 4 visible at once = 2.5x width */
+    animation: slide 20s infinite linear;
 }
 
+/* Individual Slide */
 .slide {
-    width: 10%;
+    width: 10%; /* Each slide takes 10% of the slider width */
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
+/* Logo Styling */
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     transition: transform 0.3s ease, border-radius 0.3s ease;
 }
 
+/* Active Logo Styling */
 .logoactive {
-    transform: scale(1.2);
+    transform: scale(1.3);
     border-radius: 50%;
     border: 2px solid peachpuff;
 }
 
+/* Keyframes for Slider Animation */
 @keyframes slide {
     0% { transform: translateX(0%); }
-    10% { transform: translateX(-10%); }
-    20% { transform: translateX(-20%); }
-    30% { transform: translateX(-30%); }
-    40% { transform: translateX(-40%); }
-    50% { transform: translateX(-50%); }
-    60% { transform: translateX(-60%); }
-    70% { transform: translateX(-70%); }
-    80% { transform: translateX(-80%); }
-    90% { transform: translateX(-90%); }
-    100% { transform: translateX(-100%); }
-        }
+    100% { transform: translateX(-60%); } /* Move 6 slides (60%) to show all logos */
+}
     </style>
