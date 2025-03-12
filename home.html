@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
+<div class="slider">
+    <div class="slider-track">
+        <div class="slide"><img src="league1.png" alt="League 1" class="logo"></div>
+        <div class="slide"><img src="league2.png" alt="League 2" class="logo"></div>
+        <div class="slide"><img src="league3.png" alt="League 3" class="logo"></div>
+        <div class="slide"><img src="league4.png" alt="League 4" class="logo"></div>
+        <div class="slide"><img src="league5.png" alt="League 5" class="logo"></div>
+        <div class="slide"><img src="league6.png" alt="League 6" class="logo"></div>
+        <div class="slide"><img src="league7.png" alt="League 7" class="logo"></div>
+        <div class="slide"><img src="league8.png" alt="League 8" class="logo"></div>
+        <div class="slide"><img src="league9.png" alt="League 9" class="logo"></div>
+        <div class="slide"><img src="league10.png" alt="League 10" class="logo"></div>
+    </div>
+</div>
 <h3 class="header-text">🔥 Hot Matches</h3>
 <div class="match-container">
   <div class="match-card">
@@ -267,7 +271,49 @@
             </div>
         </div>  
     </section>
+    <style>
+      .slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
 
-</body>
+.slider-track {
+    display: flex;
+    width: 1000%; /* 10 logos * 100% */
+    animation: slide 20s infinite;
+}
 
-</html>
+.slide {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease, border-radius 0.3s ease;
+}
+
+.logoactive {
+    transform: scale(1.2);
+    border-radius: 50%;
+    border: 2px solid peachpuff;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0%); }
+    10% { transform: translateX(-10%); }
+    20% { transform: translateX(-20%); }
+    30% { transform: translateX(-30%); }
+    40% { transform: translateX(-40%); }
+    50% { transform: translateX(-50%); }
+    60% { transform: translateX(-60%); }
+    70% { transform: translateX(-70%); }
+    80% { transform: translateX(-80%); }
+    90% { transform: translateX(-90%); }
+    100% { transform: translateX(-100%); }
+        }
+    </style>
