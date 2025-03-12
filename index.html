@@ -223,8 +223,7 @@ function toggleFAQ(item) {
     if (!isActive) {
         item.classList.add('factive');
     }
-}
-                const slides = document.querySelectorAll('.slide');
+}const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
 
 function updateActiveSlide() {
@@ -239,7 +238,7 @@ function updateActiveSlide() {
     currentIndex = (currentIndex + 1) % slides.length;
 }
 
-setInterval(updateActiveSlide, 2000); // Change slide every 2 seconds
+setInterval(updateActiveSlide, 2000); // Change active slide every 2 seconds
             </script>
 </body>
 </html>
