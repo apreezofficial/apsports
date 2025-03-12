@@ -224,6 +224,22 @@ function toggleFAQ(item) {
         item.classList.add('factive');
     }
 }
+                const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+function updateActiveSlide() {
+    slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+            slide.querySelector('.logo').classList.add('logoactive');
+        } else {
+            slide.querySelector('.logo').classList.remove('logoactive');
+        }
+    });
+
+    currentIndex = (currentIndex + 1) % slides.length;
+}
+
+setInterval(updateActiveSlide, 2000); // Change slide every 2 seconds
             </script>
 </body>
 </html>
