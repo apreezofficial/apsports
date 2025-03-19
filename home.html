@@ -1,9 +1,17 @@
-<div class="slider-container">
-    <div class="slider">
-        <div class="slide"><img src="https://cnf-cdn.cnfsports.live/image/74e847d1-73bc-4530-bc57-79e7c8e04fe5.webp" alt="League 1" class="logo"></div>
-        <div class="slide"><img src="https://cnf-cdn.cnfsports.live/image/74e847d1-73bc-4530-bc57-79e7c8e04fe5.webp" alt="League 2" class="logo"></div>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="https://cnf-cdn.cnfsports.live/image/74e847d1-73bc-4530-bc57-79e7c8e04fe5.webp" alt="League 1" class="logo">
+            </div>
+            <div class="slide">
+                <img src="https://cnf-cdn.cnfsports.live/image/74e847d1-73bc-4530-bc57-79e7c8e04fe5.webp" alt="League 2" class="logo">
+            </div>
+            <div class="slide">
+                <img src="https://cnf-cdn.cnfsports.live/image/74e847d1-73bc-4530-bc57-79e7c8e04fe5.webp" alt="League 3" class="logo">
+            </div>
+        </div>
     </div>
-</div>
+
 <h3 class="header-text">🔥 Hot Matches</h3>
 <div class="match-container">
   <div class="match-card">
@@ -263,6 +271,7 @@
             </div>
         </div>  
     </section>
+<style>
 /* Slider Container */
 .slider-container {
     width: 100%;
@@ -307,7 +316,8 @@
 
 .dot.active {
     background-color: #717171;
-}
+}</style>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".slider");
     const slides = document.querySelectorAll(".slide");
@@ -373,3 +383,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Auto-slide every 2 seconds
     interval = setInterval(nextSlide, 2000);
 });
+        </script>
