@@ -50,7 +50,7 @@ function setActiveLink(page) {
   });
 
   // Set the color of the active link to red
-  const activeLink = document.querySelector(`.routelink[href="?page=${page}"]`);
+  const activeLink = document.querySelectorAll(`.routelink[href="?page=${page}"]`);
   if (activeLink) {
     activeLink.style.color = "red"; // Set color to red
   }
