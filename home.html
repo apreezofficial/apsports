@@ -263,24 +263,25 @@
             </div>
         </div>  
     </section>
-    <style>
- .slider-container {
+/* Slider Container */
+.slider-container {
     width: 100%;
+    max-width: 500px; /* Adjust width */
     overflow: hidden;
     position: relative;
-    background: #000; /* Optional: Background color */
+    margin: auto;
 }
 
+/* Slider */
 .slider {
     display: flex;
-    width: max-content;
-    animation: slideAnimation 10s linear infinite;
+    transition: transform 0.5s ease-in-out;
 }
 
+/* Slides */
 .slide {
-    flex: 0 0 auto;
-    width: 200px; /* Adjust as needed */
-    margin: 0 10px;
+    flex: 0 0 100%;
+    text-align: center;
 }
 
 .logo {
@@ -288,25 +289,87 @@
     height: auto;
 }
 
-/* Keyframes for smooth infinite scrolling */
-@keyframes slideAnimation {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+/* Dots Navigation */
+.dots {
+    text-align: center;
+    margin-top: 10px;
 }
-    </style>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".slider");
 
-    // Clone slides for infinite effect
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const slider = document.querySelector(".slider");
     const slides = document.querySelectorAll(".slide");
-    slides.forEach((slide) => {
-        let clone = slide.cloneNode(true);
-        slider.appendChild(clone);
+    const dotsContainer = document.createElement("div");
+    dotsContainer.classList.add("dots");
+    document.querySelector(".slider-container").appendChild(dotsContainer);
+
+    let currentIndex = 0;
+    let interval;
+    let startX = 0;
+
+    // Create Dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(index));
+        dotsContainer.appendChild(dot);
     });
+
+    const dots = document.querySelectorAll(".dot");
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+        restartAutoSlide();
+    }
+
+    function restartAutoSlide() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 2000);
+    }
+
+    // Touch Events for Swiping
+    slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+        let moveX = e.touches[0].clientX - startX;
+        if (moveX > 50) {
+            currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+            updateSlider();
+            restartAutoSlide();
+        } else if (moveX < -50) {
+            nextSlide();
+            restartAutoSlide();
+        }
+    });
+
+    // Auto-slide every 2 seconds
+    interval = setInterval(nextSlide, 2000);
 });
-</script>
