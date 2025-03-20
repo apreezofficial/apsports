@@ -51,7 +51,7 @@
     font-weight: bold;
 }/* Side Navbar */
 .side-navbar {
-    position: relative;
+    position: fixed;
     left: 0;
     top: 80px;
     width: 280px;
