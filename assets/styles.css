@@ -51,18 +51,16 @@
     font-weight: bold;
 }/* Side Navbar */
 .side-navbar {
-    position: fixed;
+    position: relative;
     left: 0;
     top: 80px;
     width: 280px;
-    height: fit-content; /* Corrected from 'fit' to 'fit-content' */
     background: var(--glass-bg);
     padding: 20px;
     backdrop-filter: blur(10px); /* Glass Effect */
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     border-right: 2px solid var(--extra-color);
     transition: all 0.4s ease;
-    overflow-y: auto; /* Ensure the scrollbar appears when content overflows */
 }
 
 /* Sidebar Scrollbar */
